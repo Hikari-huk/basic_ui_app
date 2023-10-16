@@ -1,4 +1,4 @@
-import 'package:basic_ui_app/template_view.dart';
+import 'package:basic_ui_app/sliver_app_bar_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TemplateAppBarPage(),
+      home: SliverAppBarPage(),
     );
   }
 }
