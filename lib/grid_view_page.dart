@@ -16,6 +16,14 @@ class _GridViewPageState extends State<GridViewPage> {
   }
 
   @override
+  void initState() {
+    _scrollController.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
