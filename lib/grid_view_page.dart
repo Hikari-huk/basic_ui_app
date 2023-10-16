@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 class GridViewPage extends StatefulWidget {
@@ -90,15 +92,41 @@ class _GridViewPageState extends State<GridViewPage> {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
           ),
-          itemBuilder: (context, index) => Container(
-                color: Colors.black,
-                child: Center(
-                  child: Text(
-                    index.toString(),
-                    style: const TextStyle(fontSize: 42, color: Colors.white),
+          itemBuilder: (context, index) {
+            final gridItemColor =
+                Color((math.Random(index).nextDouble() * 0x00FFFFFF).toInt())
+                    .withOpacity(1);
+            final gridItemBrightness = gridItemColor.computeLuminance();
+            return Stack(
+              children: [
+                Container(
+                  color: gridItemColor,
+                  child: Center(
+                    child: Text(
+                      index.toString(),
+                      style: TextStyle(
+                          fontSize: 42,
+                          color: gridItemBrightness > 0.5
+                              ? Colors.black
+                              : Colors.white),
+                    ),
                   ),
                 ),
-              )),
+                Positioned(
+                  right: 10,
+                  bottom: 10,
+                  child: Text(
+                    gridItemColor
+                        .toString()
+                        .toUpperCase()
+                        .substring(6, 16)
+                        .replaceAll('0X', '#'),
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                )
+              ],
+            );
+          }),
     );
   }
 }
