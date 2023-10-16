@@ -8,7 +8,7 @@ class GridViewPage extends StatefulWidget {
 }
 
 class _GridViewPageState extends State<GridViewPage> {
-  int _columnsCount = 2;
+  int _columnsCount = 3;
   final ScrollController _scrollController = ScrollController();
 
   @override
